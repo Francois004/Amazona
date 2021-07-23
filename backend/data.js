@@ -1,0 +1,70 @@
+export default {
+ products:[
+  {
+      name:'Slim Shirt',
+      _id:'1',
+      category:'Shirts',
+      brand:'Nike',
+      image:'/images/d1.jpg',
+      price:70,
+     rating:4.5,
+     numReviews:10,
+     countInStock:5
+ },
+ {
+    name:'T-Shirt',
+    _id:'2',
+    category:'Shirts',
+    brand:'Nike',
+    image:'/images/tshirt1.jpg',
+    price:80,
+   rating:4.5,
+   numReviews:20,
+   countInStock:9
+},
+{
+    name:'Fit Shirt',
+    _id:'3',
+    category:'Shirts',
+    brand:'Yeezy',
+    image:'/images/tshirt2.jpg',
+    price:990,
+   rating:4.5,
+   numReviews:10,
+   countInStock:3
+},
+{
+    name:'Hot Shirt',
+    _id:'4',
+    category:'Shirts',
+    brand:'Breezy',
+    image:'/images/tshirt3.jpg',
+    price:990,
+   rating:4.5,
+   numReviews:10,
+   countInStock:7
+},
+{
+    name:'Xrt Shirt',
+    _id:'5',
+    category:'Shirts',
+    brand:'Stan',
+    image:'/images/tshirt4.jpg',
+    price:990,
+   rating:4.5,
+   numReviews:10,
+   countInStock:7
+},
+{
+    name:'Reelb Shirt',
+    _id:'6',
+    category:'Shirts',
+    brand:'Balenx',
+    image:'/images/tshirt5.jpg',
+    price:990,
+   rating:4.5,
+   numReviews:10,
+   countInStock:7
+},
+]
+}
