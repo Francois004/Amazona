@@ -1,7 +1,6 @@
 # Amazona
 Site E-commerce de vetements
 
-MERN stack structure
 Technologies utilisés : Mongo DB - Node Js -EXpress - React JS - Redux -Cookies -Jwt -axios -bcrypt
 
 Fonctionnalités:
