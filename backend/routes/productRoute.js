@@ -1,16 +1,19 @@
 import express from 'express';
-import Product from '../models/productModel.js';
+import productModel from '../models/productModel.js';
 import getToken from '../util.js';
 
 const router=express.Router();
 
+
+// get all products
 router.get("/",async (req,res)=>{
- const products=await Product.find({});
+ const products=await productModel.find({});
  res.send(products)
 })
 
+//add product
 router.post("/",async (req,res)=>{
-    const product=new Product({
+    const product=new productModel({
       name:req.body.name,
       price:req.body.price,
       image:req.body.image,
@@ -31,14 +34,40 @@ router.post("/",async (req,res)=>{
     return res.status(500).send({message:'Error in creating Product'})
 })
 
+// product details
+
+router.get('/:id', async (req,res) =>{
+    const productId=req.params.id
+    const product=await productModel.findById(productId)
+    //data.products.find(x=>x._id===productId)
+    try{
+    if(product){
+    res.send(product);
+    }
+    else{
+        console.log("productId..", productId)
+     res.status(404).send({msg:"Product not found.."})
+    }
+   
+}
+catch(err){
+    console.log(err)
+}
+
+    
+    })
+
+
+// update product
+
 router.put("/:id",async (req,res)=>{
-    const productId=req.body.params.id
-    const product=await product.findOne({_id:productId})
+    const productId=req.params.id
+    const product=await productModel.findOne({_id:productId})
  if(product){
     product.name=req.body.name;
     product.price=req.body.price;
     product.image=req.body.image;
-    producty.brand=req.body.brand;
+    product.brand=req.body.brand;
     product.category=req.body.category;
     product.countInStock=req.body.countInStock;
     product.description=req.body.description;
@@ -56,8 +85,10 @@ router.put("/:id",async (req,res)=>{
     return res.status(500).send({message:'Error updating Product'})
 })
 
+//delete product
+
 router.delete("/:id",async (req,res)=>{
- const deletedProduct= await Product.findById(req.params.id);
+ const deletedProduct= await productModel.findById(req.params.id);
  if(deletedProduct){
      await deletedProduct.remove();
      res.send({messsage:"Product deleted"})

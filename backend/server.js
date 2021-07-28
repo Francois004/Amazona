@@ -6,46 +6,39 @@ import mongoose from 'mongoose';
 import userRoute from'./routes/userRoute.js';
 import productRoute from './routes/productRoute.js';
 import bodyParser from 'body-parser';
-
+import cors from 'cors';
 
 dotenv.config();
-const mongodbUrl="mongodb+srv://FrancoisDb:merndb04@cluster0.zzvci.mongodb.net/database?retryWrites=true&w=majority";
-//const mongodbUrl=config.MONGODB_URL;
+const mongodbUrl="mongodb+srv://"+ process.env.DB_USER_PASS + "@cluster0.zzvci.mongodb.net/database?retryWrites=true&w=majority";
+
 mongoose.connect(mongodbUrl,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
-    useCreateIndex:true
+    useCreateIndex:true,
+    useFindAndModify: false
 }).then(()=>console.log("mongodb connected")).catch(error=>console.log(error))
 
-
-
+const corsOptions = {
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }
+ 
 const app=express();
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json())
 
 app.use('/api/users',userRoute)
 
 
-/*
-app.use("/api/products",productRoute)*/
-app.get('/api/products', (req,res) =>{
-res.send(data.products);
-console.log("products..")
+app.use('/api/products',productRoute)
 
-})
 
-app.get('/api/products/:id', (req,res) =>{
-    const productId=req.params.id
-    const product=data.products.find(x=>x._id===productId)
-    if(product){
-    res.send(product);
-    }
-    else{
-    res.status(404).send({msg:"Product not found.."})
-    }
-    console.log("productId..")
-    
-    })
     
 app.listen(5000,()=>{
     console.log("server started at http:/localhost:5000")

@@ -16,7 +16,7 @@ function userSigninReducer(state={},action){
     }
 }
 
-function userRegisterReducer(state={},action){
+function userRegisterReducer(state={},action){ 
     switch(action.type){
         case USER_REGISTER_REQUEST:
         return {loading:true};

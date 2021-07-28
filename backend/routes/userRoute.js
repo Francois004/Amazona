@@ -1,11 +1,11 @@
 import express from 'express';
-import User from '../models/userModel.js';
+import userModel from '../models/userModel.js';
 import getToken from '../util.js';
 
 const router=express.Router();
 
 router.post('/signin',async(req,res)=>{
-    const signinUser=await User.findOne({
+    const signinUser=await userModel.findOne({
         email:req.body.email,
         password:req.body.password
     })
@@ -22,7 +22,7 @@ router.post('/signin',async(req,res)=>{
     }
 })
 router.post('/register',async(req,res)=>{
-   const user=new User({
+   const user=new userModel({
        name:req.body.name,
        email:req.body.email,
         password:req.body.password,
@@ -36,7 +36,7 @@ router.post('/register',async(req,res)=>{
         name:newUser.name,
         email:newUser.email,
         isAdmin:newUser.isAdmin,
-        token:getToken(newUser)
+       // token:getToken(newUser)
     })
   }else{
       res.status(401).send({msg:'Invalid User data.'})
@@ -45,7 +45,7 @@ router.post('/register',async(req,res)=>{
 })
 router.get('/createadmin',async (req,res)=>{
  try {
-    const user= new User({
+    const user= new userModel({
         name:'Dosnere',
         email:'francoisdosnere@gmail.com',
         password:'1234',
@@ -61,5 +61,16 @@ router.get('/createadmin',async (req,res)=>{
  res.send({msg:error})
  }
 })
+
+// get all users
+ router.get('/',async(req, res)=>{
+     try{
+       const users= await userModel.find({})
+       res.send(users)
+     }
+     catch(err){
+  console.log(err)
+     }
+ })
 
 export default router;

@@ -11,7 +11,7 @@ const getToken=(user)=> {
     },config.JWT_SECRET,{
      expiresIn:  '48h'
     })
-}
+} 
 
 /*const isAuth=(req,res,next)=>{
     const token=req.headers.authorization;

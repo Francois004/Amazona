@@ -29,7 +29,7 @@ const register=(name,email,password)=>async (dispatch)=>{
         dispatch({
             type:USER_REGISTER_REQUEST,payload:{name,email,password}      
     })
-       await Axios.post("/api/users/register",{
+       await Axios.post("/api/users/register",{name,
          email,password   
         }).then(res=>{
             dispatch({type:USER_REGISTER_SUCCESS,payload:res.data});

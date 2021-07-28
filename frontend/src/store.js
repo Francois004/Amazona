@@ -7,11 +7,11 @@ import {cartReducer} from "./reducers/cartReducer";
 import { userSigninReducer,userRegisterReducer } from './reducers/userReducer';
 
 const cartItems=Cookie.getJSON("cartItems") || [];
-const userInfo=Cookie.getJSON("userInfo") || {};
-//console.log(userInfo)
+const userSignin=Cookie.getJSON("userInfo") || {};
+//console.log(cartItems)
 const initialState={
-  cartItems,
-  userSignin:{userInfo}
+ cartItems,
+  userSignin
 };
 const reducer=combineReducers({
     productList:productListReducer,

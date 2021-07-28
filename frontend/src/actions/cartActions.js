@@ -14,14 +14,13 @@ const addToCart=(productId,qty)=> async (dispatch, getState)=>{
                 price:data.price,
                 countInStock:data.countInStock,
                 qty
-
-
                } 
             });
-      const mystate=getState();
-    // const {cart:{cartItems}}=getState();
-    // console.log(cart)
-     Cookie.set("cartItems",JSON.stringify(mystate.cartItems))
+
+     // const mystate=getState();
+     const {cartItems}=getState();
+    // console.log("act",getState())
+     Cookie.set("cartItems",JSON.stringify(cartItems))
 
         }).catch(e=>{
             console.log("error in cart",e)
@@ -29,12 +28,12 @@ const addToCart=(productId,qty)=> async (dispatch, getState)=>{
 
     }
     catch(error){
-       
+       console.log("err addtocart",error)
     }
 }
 const removeFromCart=(productId)=>(dispatch,getState)=>{
    dispatch({type: REMOVE_TO_CART,payload:productId})
-   const {cart:{cartItems}}=getState();
+   const {cartItems}=getState();
      Cookie.set("cartItems",JSON.stringify(cartItems))
   
 }
