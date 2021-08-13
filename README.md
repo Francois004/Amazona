@@ -15,3 +15,9 @@ A venir : systeme de paiement ; design, ajout de catégories.
 
 ![amazona2](https://user-images.githubusercontent.com/47745859/127385039-e6beedc9-b00e-464d-ae39-ce9b0e500a78.PNG)
 
+![amazona4](https://user-images.githubusercontent.com/47745859/129351919-ba63c1d2-e016-4393-ac50-d058561942eb.PNG)
+
+![amazona3](https://user-images.githubusercontent.com/47745859/129351965-8269c9fd-f3ef-457d-9661-f5654a0feefd.PNG)
+
+
+
